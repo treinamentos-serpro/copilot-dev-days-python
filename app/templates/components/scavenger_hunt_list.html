@@ -1,0 +1,20 @@
+<section class="arcade-hunt-zone" aria-labelledby="hunt-title">
+    <div class="arcade-hunt-heading">
+        <div>
+            <span class="arcade-eyebrow">FIELD CHECKLIST</span>
+            <h2 id="hunt-title">Scavenger Hunt</h2>
+        </div>
+        <strong>{{ session.marked_count }} / {{ session.board|length }}</strong>
+    </div>
+    <div class="arcade-progress" role="progressbar" aria-valuemin="0" aria-valuemax="{{ session.board|length }}" aria-valuenow="{{ session.marked_count }}" aria-label="Scavenger Hunt progress">
+        <span style="width: {{ (session.marked_count / session.board|length * 100)|round|int }}%"></span>
+    </div>
+    <div class="arcade-hunt-list" aria-label="Scavenger Hunt questions">
+        {% for item in session.board %}
+        <label class="arcade-hunt-item{% if item.is_marked %} arcade-hunt-item-marked{% endif %}" hx-post="/toggle/{{ item.id }}" hx-target="#game-container" hx-swap="outerHTML" aria-pressed="{{ 'true' if item.is_marked else 'false' }}">
+            <input type="checkbox"{% if item.is_marked %} checked{% endif %} tabindex="-1" aria-hidden="true">
+            <span>{{ item.text }}</span>
+        </label>
+        {% endfor %}
+    </div>
+</section>

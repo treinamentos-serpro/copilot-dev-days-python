@@ -8,13 +8,11 @@
             class="arcade-button arcade-button-back">
             <span>&lt;&lt;</span> ← Back
         </button>
-        <h1 class="arcade-header-title">SOC OPS <span>//</span> BINGO</h1>
+        <h1 class="arcade-header-title">SOC OPS <span>//</span> {{ "SCAVENGER HUNT" if session.is_scavenger_hunt else "BINGO" }}</h1>
         <div class="arcade-score"><span class="arcade-score-label">SCORE</span><strong>0000</strong></div>
     </header>
 
-    <p class="arcade-instruction-line">
-        Tap a square when you find someone who matches it.
-    </p>
+    <p class="arcade-instruction-line">Tap an item when you find someone who matches it.</p>
 
     {% if session.has_bingo %}
     <div class="arcade-banner">
@@ -22,12 +20,19 @@
     </div>
     {% endif %}
 
-    <div class="arcade-board-zone">
-        {% include "components/bingo_board.html" %}
-    </div>
+    {% if session.is_scavenger_hunt %}
+        {% include "components/scavenger_hunt_list.html" %}
+    {% else %}
+        <div class="arcade-board-zone">
+            {% include "components/bingo_board.html" %}
+        </div>
+    {% endif %}
 </div>
 
 {% if session.show_bingo_modal %}
     {% include "components/bingo_modal.html" %}
+{% endif %}
+{% if session.show_scavenger_hunt_modal %}
+    {% include "components/scavenger_hunt_modal.html" %}
 {% endif %}
 </div>

@@ -1,0 +1,11 @@
+<div class="arcade-modal fixed inset-0 flex items-center justify-center p-4 z-50">
+    <div class="arcade-modal-panel max-w-xs w-full text-center animate-[bounce_0.5s_ease-out]">
+        <div class="arcade-trophy">★</div>
+        <p class="arcade-eyebrow">MISSION COMPLETE!</p>
+        <h2>SCAVENGER HUNT COMPLETE</h2>
+        <p class="arcade-modal-copy">You found every match!</p>
+        <button hx-post="/dismiss-modal" hx-target="#game-container" hx-swap="outerHTML" class="arcade-button arcade-button-primary arcade-modal-button">
+            Keep Exploring <span class="arcade-button-arrow">&gt;&gt;</span>
+        </button>
+    </div>
+</div>

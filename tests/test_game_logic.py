@@ -1,3 +1,4 @@
+from app import game_logic
 from app.data import FREE_SPACE, QUESTIONS
 from app.game_logic import (
     CENTER_INDEX,
@@ -7,6 +8,37 @@ from app.game_logic import (
     toggle_square,
 )
 from app.models import BingoLine, BingoSquareData
+
+
+class TestGenerateScavengerHunt:
+    def test_hunt_has_all_24_questions(self) -> None:
+        hunt = game_logic.generate_hunt_list()
+
+        assert len(hunt) == 24
+        assert {item.text for item in hunt} == set(QUESTIONS)
+
+    def test_hunt_items_are_sequential_and_unmarked(self) -> None:
+        hunt = game_logic.generate_hunt_list()
+
+        for index, item in enumerate(hunt):
+            assert item.id == index
+            assert item.is_marked is False
+            assert item.is_free_space is False
+
+
+class TestCheckScavengerHuntComplete:
+    def test_incomplete_hunt_is_not_complete(self) -> None:
+        hunt = game_logic.generate_hunt_list()
+
+        assert game_logic.check_scavenger_hunt_complete(hunt) is False
+
+    def test_hunt_is_complete_when_every_item_is_marked(self) -> None:
+        hunt = [
+            item.model_copy(update={"is_marked": True})
+            for item in game_logic.generate_hunt_list()
+        ]
+
+        assert game_logic.check_scavenger_hunt_complete(hunt) is True
 
 
 class TestGenerateBoard:

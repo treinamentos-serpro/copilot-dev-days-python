@@ -8,7 +8,7 @@ from fastapi.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
 
 from app.game_service import GameSession, get_session
-from app.models import GameState
+from app.models import GameMode, GameState
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -32,14 +32,15 @@ async def home(request: Request) -> Response:
     return templates.TemplateResponse(
         request,
         "home.html",
-        {"session": session, "GameState": GameState},
+        {"session": session, "GameState": GameState, "GameMode": GameMode},
     )
 
 
 @app.post("/start", response_class=HTMLResponse)
 async def start_game(request: Request) -> Response:
     session = _get_game_session(request)
-    session.start_game()
+    mode = GameMode(request.query_params.get("mode", GameMode.BINGO))
+    session.start_game(mode)
     return templates.TemplateResponse(
         request, "components/game_screen.html", {"session": session}
     )
@@ -61,7 +62,7 @@ async def reset_game(request: Request) -> Response:
     return templates.TemplateResponse(
         request,
         "components/start_screen.html",
-        {"session": session, "GameState": GameState},
+        {"session": session, "GameState": GameState, "GameMode": GameMode},
     )
 
 

@@ -8,15 +8,33 @@ BOARD_SIZE = 5
 CENTER_INDEX = 12  # 5x5 grid, center is index 12 (row 2, col 2)
 
 
+def _sample_questions() -> list[str]:
+    return random.sample(QUESTIONS, len(QUESTIONS))
+
+
 def generate_board() -> list[BingoSquareData]:
     """Generate a new 5x5 bingo board."""
-    questions = iter(random.sample(QUESTIONS, 24))
+    questions = iter(_sample_questions())
     return [
         BingoSquareData(id=i, text=FREE_SPACE, is_marked=True, is_free_space=True)
         if i == CENTER_INDEX
         else BingoSquareData(id=i, text=next(questions))
         for i in range(BOARD_SIZE * BOARD_SIZE)
     ]
+
+
+def generate_hunt_list() -> list[BingoSquareData]:
+    """Generate a shuffled list containing every scavenger hunt question."""
+    return [
+        BingoSquareData(id=i, text=text) for i, text in enumerate(_sample_questions())
+    ]
+
+
+def check_scavenger_hunt_complete(items: list[BingoSquareData]) -> bool:
+    """Check whether every scavenger hunt question is marked."""
+    return bool(items) and all(
+        item.is_marked for item in items if not item.is_free_space
+    )
 
 
 def toggle_square(

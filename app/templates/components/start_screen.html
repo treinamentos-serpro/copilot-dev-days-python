@@ -8,6 +8,13 @@
             </div>
 
             <div class="arcade-start-action arcade-reveal arcade-delay-2">
+                <div class="arcade-mode-selector" aria-label="Choose a game mode">
+                    <span class="arcade-mode-label">MODE</span>
+                    <div class="arcade-mode-options">
+                        <button hx-post="/start?mode=bingo" hx-target="#game-container" hx-swap="outerHTML" class="arcade-mode-button arcade-mode-button-active">Bingo</button>
+                        <button hx-post="/start?mode=scavenger_hunt" hx-target="#game-container" hx-swap="outerHTML" class="arcade-mode-button">Scavenger Hunt</button>
+                    </div>
+                </div>
                 <button
                     hx-post="/start"
                     hx-target="#game-container"
