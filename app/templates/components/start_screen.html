@@ -1,31 +1,56 @@
 <div id="game-container" class="arcade-shell arcade-start">
     <main class="arcade-start-layout">
-        <div class="arcade-brand arcade-reveal arcade-delay-1">
-            <span class="arcade-eyebrow">PLAYER 01 // READY</span>
-            <h1 class="arcade-title">Soc Ops</h1>
-            <p class="arcade-subtitle">Social Bingo</p>
-        </div>
+        <section class="arcade-start-copy">
+            <div class="arcade-brand arcade-reveal arcade-delay-1">
+                <span class="arcade-eyebrow">A SOCIAL BINGO EXPERIENCE</span>
+                <h1 class="arcade-title">Soc Ops</h1>
+                <p class="arcade-subtitle">Make a room full of strangers feel familiar.</p>
+            </div>
 
-        <section class="arcade-panel arcade-panel-start arcade-reveal arcade-delay-2">
+            <div class="arcade-start-action arcade-reveal arcade-delay-2">
+                <button
+                    hx-post="/start"
+                    hx-target="#game-container"
+                    hx-swap="outerHTML"
+                    class="arcade-button arcade-button-primary">
+                    <span>Start Game</span><span class="arcade-button-arrow">&gt;</span>
+                </button>
+                <p class="arcade-footer">24 prompts. 1 shared moment.</p>
+            </div>
+        </section>
+
+        <aside class="arcade-start-preview arcade-reveal arcade-delay-2" aria-label="Bingo board preview">
+            <div class="arcade-preview-header">
+                <span>FIELD NOTES</span>
+                <span>01 / 05</span>
+            </div>
+            <div class="arcade-preview-board" aria-hidden="true">
+                <span class="arcade-preview-square arcade-preview-square-red">A</span>
+                <span class="arcade-preview-square">?</span>
+                <span class="arcade-preview-square arcade-preview-square-yellow">B</span>
+                <span class="arcade-preview-square">?</span>
+                <span class="arcade-preview-square arcade-preview-square-blue">C</span>
+                <span class="arcade-preview-square">?</span>
+                <span class="arcade-preview-square arcade-preview-square-green">D</span>
+                <span class="arcade-preview-square">?</span>
+                <span class="arcade-preview-square arcade-preview-square-red">E</span>
+            </div>
+            <div class="arcade-preview-caption">
+                <span class="arcade-pulse-dot"></span>
+                <span>Find your people</span>
+            </div>
+        </aside>
+
+        <section class="arcade-panel arcade-panel-start arcade-reveal arcade-delay-3">
             <div class="arcade-panel-heading">
                 <span class="arcade-pixel-mark">?</span>
                 <h2>How to play</h2>
             </div>
-            <ul class="arcade-instructions">
-                <li>Find people who match the questions</li>
-                <li>Tap a square when you find a match</li>
-                <li>Get 5 in a row to win!</li>
-            </ul>
+            <ol class="arcade-instructions">
+                <li><strong>01</strong> Find someone who matches a prompt</li>
+                <li><strong>02</strong> Tap the square together</li>
+                <li><strong>03</strong> Get 5 in a row to win</li>
+            </ol>
         </section>
-
-        <button
-            hx-post="/start"
-            hx-target="#game-container"
-            hx-swap="outerHTML"
-            class="arcade-button arcade-button-primary arcade-reveal arcade-delay-3">
-            <span>Start Game</span><span class="arcade-button-arrow">&gt;&gt;</span>
-        </button>
-
-            <p class="arcade-footer arcade-reveal arcade-delay-3">INSERT COURAGE // PRESS START</p>
-        </main>
+    </main>
 </div>

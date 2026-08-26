@@ -19,6 +19,9 @@ class TestHomePage:
         assert "Soc Ops" in response.text
         assert "Start Game" in response.text
         assert "How to play" in response.text
+        assert 'hx-post="/start"' in response.text
+        assert 'hx-target="#game-container"' in response.text
+        assert 'hx-swap="outerHTML"' in response.text
 
     def test_home_sets_session_cookie(self, client: TestClient) -> None:
         response = client.get("/")
