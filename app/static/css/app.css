@@ -98,7 +98,7 @@ button:focus-visible { outline: 4px solid var(--blue); outline-offset: 4px; }
 .arcade-square { min-height: 0; border: 3px solid var(--line); border-radius: 0; color: var(--ink); background: var(--paper); cursor: pointer; box-shadow: 3px 3px 0 var(--line); font-size: clamp(16px, 2.3vw, 25px); }
 .arcade-square:hover { background: #d9ebff; transform: translateY(-2px); }
 .arcade-square:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--line); }
-.arcade-square-text { padding: 4px; }
+.arcade-square-text { padding: 4px; font-size: clamp(11px, 1.6vw, 18px); }
 .arcade-square-marked { color: var(--paper); background: var(--green); }
 .arcade-square-winning { color: var(--ink); background: var(--yellow); animation: pixel-pulse .7s steps(2, end) infinite alternate; }
 .arcade-square-free { color: var(--paper); background: var(--blue); font-family: 'Press Start 2P', monospace; font-size: clamp(10px, 1.7vw, 16px); cursor: default; }
@@ -137,6 +137,7 @@ button:focus-visible { outline: 4px solid var(--blue); outline-offset: 4px; }
     .arcade-board-zone { padding: 8px; box-shadow: 5px 5px 0 var(--line); }
     .arcade-board { gap: 4px; }
     .arcade-square { border-width: 2px; box-shadow: 2px 2px 0 var(--line); font-size: 15px; }
+    .arcade-square-text { font-size: 11px; }
     .arcade-square-free { font-size: 9px; }
 }
 
