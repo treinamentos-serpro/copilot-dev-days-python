@@ -1,25 +1,31 @@
-<div id="game-container">
-<div class="flex flex-col items-center justify-center min-h-full p-6 bg-gray-50">
-    <div class="text-center max-w-sm">
-        <h1 class="text-4xl font-bold text-gray-900 mb-2">Soc Ops</h1>
-        <p class="text-lg text-gray-600 mb-8">Social Bingo</p>
-
-        <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200 mb-8">
-            <h2 class="font-semibold text-gray-800 mb-3">How to play</h2>
-            <ul class="text-left text-gray-600 text-sm space-y-2">
-                <li>• Find people who match the questions</li>
-                <li>• Tap a square when you find a match</li>
-                <li>• Get 5 in a row to win!</li>
-            </ul>
+<div id="game-container" class="arcade-shell arcade-start">
+    <main class="arcade-start-layout">
+        <div class="arcade-brand arcade-reveal arcade-delay-1">
+            <span class="arcade-eyebrow">PLAYER 01 // READY</span>
+            <h1 class="arcade-title">Soc Ops</h1>
+            <p class="arcade-subtitle">Social Bingo</p>
         </div>
+
+        <section class="arcade-panel arcade-panel-start arcade-reveal arcade-delay-2">
+            <div class="arcade-panel-heading">
+                <span class="arcade-pixel-mark">?</span>
+                <h2>How to play</h2>
+            </div>
+            <ul class="arcade-instructions">
+                <li>Find people who match the questions</li>
+                <li>Tap a square when you find a match</li>
+                <li>Get 5 in a row to win!</li>
+            </ul>
+        </section>
 
         <button
             hx-post="/start"
             hx-target="#game-container"
             hx-swap="outerHTML"
-            class="w-full bg-accent text-white font-semibold py-4 px-8 rounded-lg text-lg active:bg-accent-light transition-colors">
-            Start Game
+            class="arcade-button arcade-button-primary arcade-reveal arcade-delay-3">
+            <span>Start Game</span><span class="arcade-button-arrow">&gt;&gt;</span>
         </button>
-    </div>
-</div>
+
+            <p class="arcade-footer arcade-reveal arcade-delay-3">INSERT COURAGE // PRESS START</p>
+        </main>
 </div>
